@@ -20,20 +20,20 @@ public class Main {
 		for(int q=0;q<str.length;q++)
 		{
 			char crnt=str[q].charAt(0);
-			String past=new String(); 
+			boolean[] spelled=new boolean[26];
 			int i=1;
 			for(i=i;i<str[q].length();i++)
 			{
 				char now=str[q].charAt(i);
 				if(now!=crnt)
 				{
-					if(past.contains(Character.toString(now))) 
+					if(spelled[now-'a']==true) 
 					{
 						break;
 					}
 					else
 					{
-						past=past+crnt;
+						spelled[crnt-'a']=true;
 						crnt=now;
 					}
 				}
@@ -43,7 +43,9 @@ public class Main {
 				}
 			}
 			if(i==str[q].length())
+			{
 				res++;
+			}
 		}
 		return res;
 	}
