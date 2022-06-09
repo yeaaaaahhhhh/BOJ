@@ -22,6 +22,7 @@ public class Main {
 			char crnt=str[q].charAt(0);
 			boolean[] spelled=new boolean[26];
 			int i=1;
+			boolean group=true;
 			for(i=i;i<str[q].length();i++)
 			{
 				char now=str[q].charAt(i);
@@ -29,6 +30,7 @@ public class Main {
 				{
 					if(spelled[now-'a']==true) 
 					{
+						group=false;
 						break;
 					}
 					else
@@ -37,12 +39,8 @@ public class Main {
 						crnt=now;
 					}
 				}
-				else
-				{
-					
-				}
 			}
-			if(i==str[q].length())
+			if(group)
 			{
 				res++;
 			}
