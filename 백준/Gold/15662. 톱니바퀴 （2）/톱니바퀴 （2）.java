@@ -51,34 +51,15 @@ class Main {
 					right++;
 				}
 			}
-			boolean tdir = !dir;
-			for (int i = n-1; i >= left; i--) {
-				if (tdir) {
-					// 시계
-					int end = wheel[i] & 1;
-					
-					wheel[i] = (short) ((wheel[i] >> 1) | (end << 7));
-				} else {
-					// 반시계
-					int end = (wheel[i] >> 7) & 1;
-					
-					wheel[i] = (short) ((wheel[i] << 1) & 255 | end);
-				}
-				tdir=!tdir;
-			}
-			if (dir) {
-				// 시계
-				int end = wheel[n] & 1;
-				
-				wheel[n] = (short) ((wheel[n] >> 1) | (end << 7));
-			} else {
-				// 반시계
-				int end = (wheel[n] >> 7) & 1;
-				
-				wheel[n] = (short) ((wheel[n] << 1) & 255 | end);
-			}
-			tdir=!dir;
-			for (int i = n+1; i <= right; i++) {
+			
+			boolean tdir;
+			
+			if(n%2==left%2)
+				tdir=dir;
+			else
+				tdir=!dir;
+
+			for (int i = left; i <= right; i++) {
 				if (tdir) {
 					// 시계
 					int end = wheel[i] & 1;
@@ -91,6 +72,7 @@ class Main {
 				tdir=!tdir;
 			}
 		}
+		
 		int res = 0;
 		for (int i = 0; i < T; i++) {
 		
@@ -98,6 +80,7 @@ class Main {
 				res++;
 			}
 		}
+		
 		bw.write(res + "\n");
 		bw.flush();
 		bw.close();
