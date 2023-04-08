@@ -23,7 +23,7 @@ class Solution {
         }
         
         int cnt=0;
-        while(!q1.isEmpty()&&!q2.isEmpty())
+        while(!q1.isEmpty()||!q2.isEmpty())
         {
         	int v;
         	if(cnt>len)
