@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.io.*;
 class Solution {
     static int maxScore=0;
     static ArrayList<int[]> arr=new ArrayList<int[]>();
@@ -66,7 +65,6 @@ class Solution {
             {
                 if(lion-apeach!=maxScore)
                 {
-                    System.out.println(lion-apeach);
                     arr.clear();
                     maxScore=lion-apeach;
                 }
