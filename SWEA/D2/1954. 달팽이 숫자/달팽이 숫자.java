@@ -1,54 +1,44 @@
-import java.util.Scanner;
-import java.io.FileInputStream;
 import java.util.*;
+import java.io.*;
 
 class Solution {
-	public static void main(String args[]) throws Exception {
-		Scanner sc = new Scanner(System.in);
-		int T;
-		T = sc.nextInt();
-		for (int test_case = 1; test_case <= T; test_case++) {
-			int N = sc.nextInt();
-			System.out.println("#" + test_case);
+
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int[] dx = { 0, 1, 0, -1 };
+		int[] dy = { 1, 0, -1, 0 };
+		int T = Integer.parseInt(br.readLine());
+		for (int t = 1; t <= T; t++) {
+			int N = Integer.parseInt(br.readLine());
+			System.out.println("#"+t);
 			int[][] arr = new int[N][N];
-			int i = 1;
+			int x = 0, y = -1;
+			int idx = 1;
 			int dir = 0;
-			int x=0,y=0;
-			arr[0][0]=1;
-			while (i < N * N) {
-				switch (dir) {
-				case 0: 
-					while(y+1<N&&arr[x][y+1]==0)
-					{
-						arr[x][++y]=++i;
+			boolean flag = false;
+			while (true) {
+				int tx = x + dx[dir % 4];
+				int ty = y + dy[dir % 4];
+				if (tx >= 0 && ty >= 0 && tx < N && ty < N && arr[tx][ty] == 0) {
+					x = tx;
+					y = ty;
+					flag = false;
+					arr[x][y] = idx++;
+				} else {
+					if (!flag) {
+						dir++;
+						flag = true;
+					} else {
+						break;
 					}
-					break;
-				case 1: 
-					while(x+1<N&&arr[x+1][y]==0)
-					{
-						arr[++x][y]=++i;
-					}
-					break;
-				case 2: 
-					while(x-1>=0&&arr[x-1][y]==0)
-					{
-						arr[--x][y]=++i;
-					}
-					break;
-				case 3: 
-					while(y-1>=0&&arr[x][y-1]==0)
-					{
-						arr[x][--y]=++i;
-					}
-					break;
 				}
-				dir=(dir+1)%4;
+
 			}
-			for(int[] ta:arr)
-			{
-				for(int a:ta)
-				{
-					System.out.print(a+" ");
+			for (int[] ar : arr) {
+				for (int a : ar) {
+					System.out.print(a + " ");
 				}
 				System.out.println();
 			}
