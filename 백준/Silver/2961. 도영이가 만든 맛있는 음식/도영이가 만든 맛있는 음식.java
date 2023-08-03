@@ -1,49 +1,41 @@
 
 import java.io.*;
-import java.util.*;
 
-class Main{
+
+public class Main {
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-		int N = Integer.parseInt(br.readLine());
-		int res = Integer.MAX_VALUE;
-		ArrayList<Food> arr = new ArrayList<>();
-		for (int i = 0; i < N; i++) {
-			String[] tmp = br.readLine().split(" ");
-			int s = Integer.parseInt(tmp[0]);
-			int b = Integer.parseInt(tmp[1]);
-
-			arr.add(new Food(s, b));
-			if (res > Math.abs(s - b)) {
-				res = Math.abs(s - b);
-			}
-
-			if (i != 0) {
-				int len = arr.size()-1;
-				for (int j = 0; j < len; j++) {
-					Food cur = arr.get(j);
-					int ts = cur.sour * s;
-					int tb = cur.bitter + b;
-					arr.add(new Food(ts, tb));
-					if (res > Math.abs(ts - tb)) {
-						res = Math.abs(ts - tb);
-					}
+		BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(System.out));
+		int N=Integer.parseInt(br.readLine());
+		int[][] arr=new int[N][2];
+		for(int i=0;i<N;i++)
+		{
+			String[] tmp=br.readLine().split(" ");
+			arr[i][0]=Integer.parseInt(tmp[0]);
+			arr[i][1]=Integer.parseInt(tmp[1]);
+		}
+		
+		int len=(1<<N);
+		int min=Integer.MAX_VALUE;
+		
+		for(int i=1;i<len;i++)
+		{
+			int[] taste= {1,0};
+			for(int j=0;j<N;j++)
+			{
+				if(((i>>j)&1)==1)
+				{
+					taste[0]*=arr[j][0];
+					taste[1]+=arr[j][1];
 				}
 			}
+			int res=Math.abs(taste[0]-taste[1]);
+			//System.out.println(taste[0]+" "+taste[1]);
+			
+			if(min>res)
+				min=res;
 		}
-		System.out.println(res);
-	}
-
-}
-
-class Food {
-	int sour;
-	int bitter;
-
-	public Food(int sour, int bitter) {
-		super();
-		this.sour = sour;
-		this.bitter = bitter;
+		System.out.println(min);
 	}
 }
