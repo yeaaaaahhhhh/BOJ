@@ -1,15 +1,18 @@
 import java.io.*;
 import java.util.*;
 
+
 public class Main {
-	static boolean[][] board;
-	static int res=0,N;
+	static boolean[][] occupied=new boolean[3][];
+	static int N;
+	static int res=0;
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N=Integer.parseInt(br.readLine());
-		
-		board=new boolean[N][N];
-		
+
+		occupied[0]=new boolean[N];
+		occupied[1]=new boolean[N*2];
+		occupied[2]=new boolean[N*2];
 		dfs(0);
 		System.out.println(res);
 	}
@@ -17,63 +20,38 @@ public class Main {
 	{
 		if(idx==N)
 		{
-//			for(boolean[] bo:board)
-//			{
-//				System.out.println(Arrays.toString(bo));
-//			}
-//			System.out.println();
 			res++;
 			return;
 		}
-
 		for(int i=0;i<N;i++)
 		{
-			boolean flag = false;
-			for(int j=0;j<idx;j++)
+			if(isAvailable(idx, i))
 			{
-				if(board[j][i])
-				{
-					flag=true;
-					break;
-				}
-			}
-			if(!flag)
-			{
-				int ty=idx-1;
-				int tx=i-1;
-				while(tx>=0&&ty>=0&&tx<N&&ty<N)
-				{
-					if(board[ty][tx])
-					{
-						flag=true;
-						break;
-					}
-					ty-=1;
-					tx-=1;
-				}
-			}
-			if(!flag)
-			{
-				int ty=idx-1;
-				int tx=i+1;
-				while(tx>=0&&ty>=0&&tx<N&&ty<N)
-				{
-					if(board[ty][tx])
-					{
-						flag=true;
-						break;
-					}
-					ty-=1;
-					tx+=1;
-				}
-			}
-			if(!flag)
-			{
-				board[idx][i]=true;
+				occupied[0][i]=true;
+				occupied[1][idx-i+N-1]=true;
+				occupied[2][idx+i]=true;
 				dfs(idx+1);
-				board[idx][i]=false;
+				occupied[0][i]=false;
+				occupied[1][idx-i+N-1]=false;
+				occupied[2][idx+i]=false;
 			}
 		}
+	}
+	static boolean isAvailable(int hang,int yeol)
+	{
+		if(occupied[0][yeol])
+		{
+			return false;
+		}
+		if(occupied[1][hang-yeol+N-1])
+		{
+			return false;
+		}
+		if(occupied[2][hang+yeol])
+		{
+			return false;
+		}
+		return true;
 	}
 }
 
