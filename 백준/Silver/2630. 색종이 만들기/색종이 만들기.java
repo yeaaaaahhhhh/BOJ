@@ -1,60 +1,61 @@
 import java.io.*;
 import java.util.*;
 
-class Main {
-	static int N;
-	static int[][] arr;
-	static int[] paper=new int[2];
-	public static void main(String[] args) throws IOException
-	{
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
-		
+public class Main {
+	static int[][] board;
+	static int blue=0,white=0,N;
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N=Integer.parseInt(br.readLine());
-		arr=new int[N][N];
 		
-		
+		board=new int[N][N];
 		for(int i=0;i<N;i++)
 		{
-			String[] tmp=br.readLine().split(" ");			
+			String[] tmp=br.readLine().split(" ");
 			for(int j=0;j<N;j++)
 			{
-				arr[i][j]=Integer.parseInt(tmp[j]);
+				board[i][j]=Integer.parseInt(tmp[j]);
 			}
-			
 		}
-		func(0,0,N);
-		bw.write(paper[0]+"\n"+paper[1]);
-		bw.flush();
-		bw.close();
-		br.close();
+		dfs(0,0,N);
+		System.out.println(white);
+		System.out.println(blue);
 	}
-	static void func(int x,int y,int size)
+	static void dfs(int y,int x,int size)
 	{
-		int color=arr[x][y];
-		boolean check=false;
-		for(int i=x;i<x+size;i++)
+		int state=board[y][x];
+		boolean flag=true;
+		outer:for(int i=0;i<size;i++)
 		{
-			for(int j=y;j<y+size;j++)
+			for(int j=0;j<size;j++)
 			{
-				if(arr[i][j]!=color)
+				if(board[y+i][x+j]!=state)
 				{
-					check=true;
-					break;
+					flag=false;
+					break outer;
 				}
 			}
 		}
-		if(check)
+		
+		if(flag)//다 같은 색
 		{
-			func(x,y,size/2);
-			func(x,y+size/2,size/2);
-			func(x+size/2,y,size/2);
-			func(x+size/2,y+size/2,size/2);
+			//System.out.println(y+" "+x+" "+size);
+			if(state==1)
+			{
+				blue++;
+			}
+			else
+			{
+				white++;
+			}
 		}
 		else
 		{
-			paper[color]+=1;
+			dfs(y,x,size/2);
+			dfs(y,x+size/2,size/2);
+			dfs(y+size/2,x,size/2);
+			dfs(y+size/2,x+size/2,size/2);
 		}
 	}
-
 }
+
