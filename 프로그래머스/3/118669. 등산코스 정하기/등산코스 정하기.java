@@ -15,7 +15,7 @@ class Solution {
         {
             summit.add(s);
         }
-        Collections.sort(summit);
+        // Collections.sort(summit);
         
         // for(int ga:gate)
         //     System.out.print(ga+" ");
