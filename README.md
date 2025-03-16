@@ -7,13 +7,19 @@ This repository is for BOJ practice.
 |  |
 | ------- |
 | [0034-find-first-and-last-position-of-element-in-sorted-array](https://github.com/yeaaaaahhhhh/BOJ/tree/master/0034-find-first-and-last-position-of-element-in-sorted-array) |
+| [0088-merge-sorted-array](https://github.com/yeaaaaahhhhh/BOJ/tree/master/0088-merge-sorted-array) |
 | [0283-move-zeroes](https://github.com/yeaaaaahhhhh/BOJ/tree/master/0283-move-zeroes) |
 ## Two Pointers
 |  |
 | ------- |
+| [0088-merge-sorted-array](https://github.com/yeaaaaahhhhh/BOJ/tree/master/0088-merge-sorted-array) |
 | [0283-move-zeroes](https://github.com/yeaaaaahhhhh/BOJ/tree/master/0283-move-zeroes) |
 ## Binary Search
 |  |
 | ------- |
 | [0034-find-first-and-last-position-of-element-in-sorted-array](https://github.com/yeaaaaahhhhh/BOJ/tree/master/0034-find-first-and-last-position-of-element-in-sorted-array) |
+## Sorting
+|  |
+| ------- |
+| [0088-merge-sorted-array](https://github.com/yeaaaaahhhhh/BOJ/tree/master/0088-merge-sorted-array) |
 <!---LeetCode Topics End-->
