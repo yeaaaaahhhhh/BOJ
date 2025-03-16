@@ -14,10 +14,6 @@ public:
                 nums1[--len]=nums1[--m];
             }
         }
-        while (m!=0)
-        {
-            nums1[--len]=nums1[--m];
-        }
         while (n!=0)
         {
             nums1[--len]=nums2[--n];
