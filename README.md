@@ -14,6 +14,7 @@ This repository is for BOJ practice.
 | ------- |
 | [0088-merge-sorted-array](https://github.com/yeaaaaahhhhh/BOJ/tree/master/0088-merge-sorted-array) |
 | [0283-move-zeroes](https://github.com/yeaaaaahhhhh/BOJ/tree/master/0283-move-zeroes) |
+| [1894-merge-strings-alternately](https://github.com/yeaaaaahhhhh/BOJ/tree/master/1894-merge-strings-alternately) |
 ## Binary Search
 |  |
 | ------- |
@@ -22,4 +23,8 @@ This repository is for BOJ practice.
 |  |
 | ------- |
 | [0088-merge-sorted-array](https://github.com/yeaaaaahhhhh/BOJ/tree/master/0088-merge-sorted-array) |
+## String
+|  |
+| ------- |
+| [1894-merge-strings-alternately](https://github.com/yeaaaaahhhhh/BOJ/tree/master/1894-merge-strings-alternately) |
 <!---LeetCode Topics End-->
